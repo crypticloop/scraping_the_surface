@@ -20,5 +20,5 @@ for headline in headlines:
 for headlineTitle in headlineTitles:
     f.write(headlineTitle.replace(",", "|") + "\n")
 
-#f.close()
+f.close()
 client.close()
