@@ -20,6 +20,8 @@ print()
 print("Number of headlines:", len(headlines))
 print()
 
-print(headlines[0])
+headlineTitle = headlines[0].find("a", {"class":"storylink"})
+
+print(headlineTitle.text)
 
 client.close()
