@@ -7,6 +7,9 @@ client = uReq(url)
 html = client.read()
 soup = soup(html, "html.parser")
 
+filename = "results.csv"
+f= open(filename, "w")
+
 headlines = soup.findAll("tr",{"class":"athing"})
 headlineTitles = []
 
@@ -14,7 +17,7 @@ for headline in headlines:
     headlineTitles.append(headline.find("a", {"class":"storylink"}).text)
 
 for headlineTitle in headlineTitles:
-    print(headlineTitle)
+    f.write(headlineTitle.replace(",", "|") + "\n")
 
-
+f.close()
 client.close()
