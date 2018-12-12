@@ -3,25 +3,18 @@ from bs4 import BeautifulSoup as soup
 import time
 
 url = 'https://news.ycombinator.com/news'
-
 client = uReq(url)
-
-
 html = client.read()
-
-
 soup = soup(html, "html.parser")
 
 headlines = soup.findAll("tr",{"class":"athing"})
+headlineTitles = []
 
-print()
-print("Information on the headlines:")
-print()
-print("Number of headlines:", len(headlines))
-print()
+for headline in headlines:
+    headlineTitles.append(headline.find("a", {"class":"storylink"}).text)
 
-headlineTitle = headlines[0].find("a", {"class":"storylink"})
+for headlineTitle in headlineTitles:
+    print(headlineTitle)
 
-print(headlineTitle.text)
 
 client.close()
