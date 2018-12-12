@@ -1,3 +1,5 @@
+## Explore different tags, and whether these can be scraped as well
+
 from urllib.request import urlopen as uReq
 from bs4 import BeautifulSoup as soup
 import time
