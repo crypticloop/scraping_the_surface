@@ -2,27 +2,24 @@ from urllib.request import urlopen as uReq
 from bs4 import BeautifulSoup as soup
 import time
 
-timeBeforeURL = time.time()
-hackerNewsUrl = 'https://news.ycombinator.com/news'
-timeAfterURL = time.time()
+url = 'https://news.ycombinator.com/news'
 
-print("Time for URL: ", timeAfterURL - timeBeforeURL)
-
-timeBeforeClient = time.time()
-hackerNewsClient = uReq(hackerNewsUrl)
-timeAfterClient = time.time()
-
-print("Time for Client: ", timeAfterClient - timeBeforeClient)
-
-timeBeforeRead = time.time()
-hackerNewsHtml = hackerNewsClient.read()
-timeAfterRead = time.time()
-
-print("Time for Read: ", timeAfterRead - timeBeforeRead)
-
-hackerNewsSoup = soup(hackerNewsHtml, "html.parser")
+client = uReq(url)
 
 
-print(hackerNewsSoup.title)
+html = client.read()
 
-hackerNewsClient.close()
+
+soup = soup(html, "html.parser")
+
+headlines = soup.findAll("tr",{"class":"athing"})
+
+print()
+print("Information on the headlines:")
+print()
+print("Number of headlines:", len(headlines))
+print()
+
+print(headlines[0])
+
+client.close()
