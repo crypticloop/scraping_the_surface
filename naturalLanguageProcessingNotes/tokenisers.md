@@ -56,3 +56,24 @@ Output:
 ## `word_tokenize`
 
 * Function which works exactly the same as `sent_tokenize`, but returns a list of words
+
+## `PunktSentenceTokenizer`
+
+* This is an unsupervised ML tokenizer which can be trained on custom data
+* First should be imported from the `tokenize` module
+
+```
+from nltk.tokenize import PunktSentenceTokenizer
+```
+
+* Then can train it on some set of training text, which should be of a similar style to the final data
+
+```
+custom_sent_tokenizer = PunktSentenceTokenizer(train_text)
+```
+
+* Finally, the tokenised list is produced by calling the `tokenize` method on the sample:
+
+```
+tokenized = custom_sent_tokenizer(sample_text)
+```
