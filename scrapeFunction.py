@@ -18,7 +18,8 @@ def scrape_for_headlines_complicated(url, spanTagType, spanClassName, elementTag
 
     for headlineTitle in headlineTitles:
         # f.write(headlineTitle.replace(",", "|") + "\n")
-        print(headlineTitle.replace(",", "|") + "\n")
+        headlineTitle = headlineTitle.replace(",", "|") + "\n"
+        print(headlineTitle)
 
     # f.close()
     client.close()
