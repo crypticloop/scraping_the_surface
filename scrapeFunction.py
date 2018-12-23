@@ -13,7 +13,7 @@ def scrape_for_headlines_complicated(url, spanTagType, spanClassName, elementTag
     for headline in headlines:
         tempString = CleanText(headline.find(elementTagType, {"class":elementClassName}).text)
         if tempString:
-            print(tempString)
+            # print(tempString)
             headlineTitles.append(tempString)
 
     client.close()
@@ -30,7 +30,7 @@ def scrape_for_headlines_simple(url, spanTagType, firstClassifierType, spanClass
     for headline in headlines:
         tempString = CleanText(headline.text)
         if tempString:
-            print(tempString)
+            # print(tempString)
             headlineTitles.append(tempString)
 
     client.close()
