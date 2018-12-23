@@ -11,15 +11,13 @@ def scrape_for_headlines_complicated(url, spanTagType, spanClassName, elementTag
     headlineTitles = []
 
     for headline in headlines:
-        headlineTitles.append(headline.find(elementTagType, {"class":elementClassName}).text)
-
-    for headlineTitle in headlineTitles:
-        headlineTitle = headlineTitle.replace(",", "|")
-
-    for x in range(0,len(headlineTitles)):
-        print(headlineTitles[x])
+        tempString = CleanText(headline.find(elementTagType, {"class":elementClassName}).text)
+        if tempString:
+            print(tempString)
+            headlineTitles.append(tempString)
 
     client.close()
+    return headlineTitles
 
 def scrape_for_headlines_simple(url, spanTagType, firstClassifierType, spanClassName):
     client = uReq(url)
@@ -30,11 +28,15 @@ def scrape_for_headlines_simple(url, spanTagType, firstClassifierType, spanClass
     headlineTitles = []
 
     for headline in headlines:
-        headlineTitles.append(CleanText(headline.text))
+        tempString = CleanText(headline.text)
+        if tempString:
+            print(tempString)
+            headlineTitles.append(tempString)
 
     client.close()
+    return headlineTitles
 
 def CleanText(inputString):
     inputString = inputString.replace(",", "|")
     inputString = inputString.strip()
-    print(inputString)
+    return inputString
