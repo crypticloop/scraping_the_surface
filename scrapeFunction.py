@@ -7,9 +7,6 @@ def scrape_for_headlines_complicated(url, spanTagType, spanClassName, elementTag
     html = client.read()
     soupPart = soup(html, "html.parser")
 
-    # filename = "hackerNewsResults.csv"
-    # f= open(filename, "w")
-
     headlines = soupPart.findAll(spanTagType,{"class":spanClassName})
     headlineTitles = []
 
@@ -17,20 +14,17 @@ def scrape_for_headlines_complicated(url, spanTagType, spanClassName, elementTag
         headlineTitles.append(headline.find(elementTagType, {"class":elementClassName}).text)
 
     for headlineTitle in headlineTitles:
-        # f.write(headlineTitle.replace(",", "|") + "\n")
-        headlineTitle = headlineTitle.replace(",", "|") + "\n"
-        print(headlineTitle)
+        headlineTitle = headlineTitle.replace(",", "|")
 
-    # f.close()
+    for x in range(0,len(headlineTitles)):
+        print(headlineTitles[x])
+
     client.close()
 
 def scrape_for_headlines_simple(url, spanTagType, firstClassifierType, spanClassName):
     client = uReq(url)
     html = client.read()
     soupPart = soup(html, "html.parser")
-
-    # filename = "hackerNewsResults.csv"
-    # f= open(filename, "w")
 
     headlines = soupPart.findAll(spanTagType,{firstClassifierType:spanClassName})
     headlineTitles = []
@@ -39,8 +33,9 @@ def scrape_for_headlines_simple(url, spanTagType, firstClassifierType, spanClass
         headlineTitles.append(headline.text)
 
     for headlineTitle in headlineTitles:
-        # f.write(headlineTitle.replace(",", "|") + "\n")
-        print(headlineTitle.replace(",", "|") + "\n")
+        headlineTitle = headlineTitle.replace(",", "|")
 
-    # f.close()
+    for x in range(0,len(headlineTitles)):
+        print(headlineTitles[x])
+
     client.close()
