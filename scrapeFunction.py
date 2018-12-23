@@ -30,10 +30,7 @@ def scrape_for_headlines_simple(url, spanTagType, firstClassifierType, spanClass
     headlineTitles = []
 
     for headline in headlines:
-        headlineTitles.append(headline.text)
-
-    for x in range(0,len(headlineTitles)):
-        CleanText(headlineTitles[x])
+        headlineTitles.append(CleanText(headline.text))
 
     client.close()
 
