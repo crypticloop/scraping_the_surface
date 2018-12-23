@@ -32,14 +32,12 @@ def scrape_for_headlines_simple(url, spanTagType, firstClassifierType, spanClass
     for headline in headlines:
         headlineTitles.append(headline.text)
 
-    for headlineTitle in headlineTitles:
-        headlineTitle = headlineTitle.replace(",", "|")
-
     for x in range(0,len(headlineTitles)):
         CleanText(headlineTitles[x])
 
     client.close()
 
 def CleanText(inputString):
+    inputString = inputString.replace(",", "|")
     inputString = inputString.strip()
     print(inputString)
