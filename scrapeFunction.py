@@ -7,39 +7,36 @@ def scrape_for_headlines_complicated(url, spanTagType, spanClassName, elementTag
     html = client.read()
     soupPart = soup(html, "html.parser")
 
-    # filename = "hackerNewsResults.csv"
-    # f= open(filename, "w")
-
     headlines = soupPart.findAll(spanTagType,{"class":spanClassName})
     headlineTitles = []
 
     for headline in headlines:
-        headlineTitles.append(headline.find(elementTagType, {"class":elementClassName}).text)
+        tempString = CleanText(headline.find(elementTagType, {"class":elementClassName}).text)
+        if tempString:
+            # print(tempString)
+            headlineTitles.append(tempString)
 
-    for headlineTitle in headlineTitles:
-        # f.write(headlineTitle.replace(",", "|") + "\n")
-        print(headlineTitle.replace(",", "|") + "\n")
-
-    # f.close()
     client.close()
+    return headlineTitles
 
 def scrape_for_headlines_simple(url, spanTagType, firstClassifierType, spanClassName):
     client = uReq(url)
     html = client.read()
     soupPart = soup(html, "html.parser")
 
-    # filename = "hackerNewsResults.csv"
-    # f= open(filename, "w")
-
     headlines = soupPart.findAll(spanTagType,{firstClassifierType:spanClassName})
     headlineTitles = []
 
     for headline in headlines:
-        headlineTitles.append(headline.text)
+        tempString = CleanText(headline.text)
+        if tempString:
+            # print(tempString)
+            headlineTitles.append(tempString)
 
-    for headlineTitle in headlineTitles:
-        # f.write(headlineTitle.replace(",", "|") + "\n")
-        print(headlineTitle.replace(",", "|") + "\n")
-
-    # f.close()
     client.close()
+    return headlineTitles
+
+def CleanText(inputString):
+    inputString = inputString.replace(",", "|")
+    inputString = inputString.strip()
+    return inputString
