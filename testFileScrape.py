@@ -1,4 +1,5 @@
 from scrapeFunction import *
+from searchForWordFrequency import *
 
 allResults = []
 
@@ -9,3 +10,5 @@ allResults.extend(scrape_for_headlines_simple('https://www.telegraph.co.uk/',"h3
 
 print(allResults)
 print(len(allResults))
+
+SearchForWordFrequency(allResults)
