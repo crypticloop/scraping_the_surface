@@ -1,7 +1,7 @@
 import string
+import operator
 
 def SearchForWordFrequency(arr):
-
     words = []
 
     for headline in arr:
@@ -16,3 +16,9 @@ def SearchForWordFrequency(arr):
             uniqueWords[word]+=1
 
     return uniqueWords
+
+def SortDictionary(dict):
+
+    sortedList = sorted(dict.items(), key=operator.itemgetter(1), reverse=True)
+
+    return sortedList
