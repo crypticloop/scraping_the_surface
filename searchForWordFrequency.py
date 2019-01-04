@@ -22,3 +22,7 @@ def SortDictionary(dict):
     sortedList = sorted(dict.items(), key=operator.itemgetter(1), reverse=True)
 
     return sortedList
+
+def PrintFormattedListOfTuples(listTuples):
+    for item in listTuples:
+        print('Word: {0}    Frequency {1}.'.format(item[0], item[1]))

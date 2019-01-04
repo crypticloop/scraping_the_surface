@@ -11,4 +11,4 @@ allResults.extend(scrape_for_headlines_simple('https://www.telegraph.co.uk/',"h3
 dictUniqueWords = SearchForWordFrequency(allResults)
 listSortedUniqueWords = SortDictionary(dictUniqueWords)
 
-print(listSortedUniqueWords)
+PrintFormattedListOfTuples(listSortedUniqueWords)
