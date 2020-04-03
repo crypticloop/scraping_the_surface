@@ -1,8 +1,11 @@
-from scrapeFunction import *
-from searchForWordFrequency import *
+from urllib.request import urlopen as uReq
+from bs4 import BeautifulSoup as soup
+import time
 
-allResults = []
+client = uReq("https://www.nfl.com/teams")
+html = client.read()
+soupPart = soup(html, "html.parser")
 
-allResults.extend(scrape_for_headlines_simple('https://www.nfl.com/teams',"span","style","color: rgb(123, 123, 123); font-family: \"Endzone Sans Light\", sans-serif; font-size: 12px; line-height: 100%;"))
+arr = soupPart.findAll("h2")
 
-print(allResults)
+print(len(arr))
